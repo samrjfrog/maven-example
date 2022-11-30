@@ -79,4 +79,36 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<activatedProperties>dev</activatedProperties>
+				<!-- Add your Sonar authentication key. If not needed keep line commented -->
+				<!-- Use authentication key. -->
+				<!-- <sonar.login></sonar.login> -->
+				<!-- Provide link to your documentation page for project. -->
+				<sonar.host.url>https://sonar.ap.manulife.com/</sonar.host.url>
+				<sonar.links.homepage>${project.url}</sonar.links.homepage>
+				<sonar.language>java</sonar.language>
+				<sonar.links.scm>${project.scm.url}</sonar.links.scm>
+				<sonar.exclusions>
+					/src/main/java/com/manulife/ap/Application.java,
+					/src/main/java/com/manulife/ap/config/CorsConfig.java,
+					/src/main/java/com/manulife/ap/config/SecurityConfig.java,
+					/src/main/java/com/manulife/ap/config/McfConfig.java,
+					/src/main/java/com/manulife/ap/config/CipherConfig.java,
+					/src/main/java/com/manulife/ap/config/model/JwtAuthentication.java,
+					/src/main/java/com/manulife/ap/constant/**.java,
+					/src/main/java/com/manulife/ap/model/**.java,
+					/src/main/java/com/manulife/ap/config/model/JwtAuthentication.java,
+					/src/main/java/com/manulife/ap/exception/McfAuthenticationException.java,
+				</sonar.exclusions>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
 </project>
